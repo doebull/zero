@@ -1,0 +1,101 @@
+
+<!DOCTYPE html><html lang="en">
+<head>
+<base href="http://blackhatrider.com"/>
+<title>Black Hat Rider</title>
+<meta name="description" content="Get on your bike and ride thousands of tracks drawn by other players! Black Hat Rider is an addictive game written only in JavaScript & HTML5, using the most of the new canvas element."/>
+<meta name="author" content="Pete & Maxime"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<link href="http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,700,400italic,700italic" type="text/css"/>
+<link rel="stylesheet" type="text/css" id="bhr-style" href="/style/style-red-o.css"/>
+<script src="//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+<script src="/js/lib/mootools-more.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script>window.addEvent('domready',BS.init);var require={baseUrl:'/js'},_gaq=[['_setAccount','UA-37797683-1'],['_trackPageview']],bhuser_={"id":2,"isAdmin":true,"name":"Black Hat","online":true,"last online":1390431885,"posts":"1119","ghosts":238,"title":"Haxzerz"};</script>
+<script src="/js/require.js" data-main="init"></script>
+</head>
+<body>
+</nav>
+
+<div id="content" class="container clearfix" style="margin-top: 0px;">
+<canvas id="canvas_rider" width="700" height="20" style="position: static; border: 1px solid black; z-index: 2;"></canvas>		<div class="btn-toolbar pull-right">
+		</div>
+	</div>
+	<canvas id="canvas_rider" width="700px" height="20px"></canvas>
+	<img src="/img/toolbar-left.png" class="toolbar" id="toolbar1"/>
+<img src="/img/toolbar-right.png" class="toolbar" id="toolbar2"/>
+<div id="track_menu" class="well">
+  <div class="row-fluid">
+    <div class="span12" id="charcount">Trackcode - CTRL + V to paste</div>
+  </div>
+  <div class="row-fluid">
+    <div class="span10"><textarea id="trackcode" class="input-block-level"></textarea></div>
+    <div class="btn-group btn-group-vertical span2">
+      <input class="btn btn-small" id="new" type="button" value="New">
+      <input class="btn btn-small" id="load" type="button" value="Load">
+      <input class="btn btn-small" id="save" type="button" value="Save">
+      <input class="btn btn-small" id="upload" type="button" value="Upload">
+    </div>
+  </div>
+</div>
+
+	<script type="text/javascript">
+require(['init', '/js/v1.js?1389737881'], function (BH) {
+  var TID = window.TID = "4602",
+    i = window.location.href.indexOf("#");
+  BH.getTrackID = Function.from(TID);
+  BH.getTrack = Function.from(Object.map({
+    getName: "Plastic0rp",
+    getID: "0",
+    isFeatured: true,
+    isHidden: false,
+    isFavorite: false
+  }, Function.from));
+  var rating = $$('.track-meta .rating')[0];
+  var toolbars = $$('.track-meta .btn-toolbar .btn-group').each(function (el) {
+    require(['/js/toolbar/' + el.id.substr(8) + '.js?a'])
+  });
+  var track = new BH.Track({
+    "id": "0",
+    "name": "Plastic0rp",
+    "featured": true,
+    "hidden": false,
+    "private": false,
+    "favorite": false,
+    "size": "10000",
+    "plays": "99999",
+    "thumbs up": "1000",
+    "thumbs down": "0",
+    "favorites": 1000,
+    "description": "Plastic0rp"
+  }, {
+    user: new BH.User({
+      "id": 160,
+      "isAdmin": false,
+      "name": "Ness",
+      "online": false,
+      "last online": 1390472631,
+      "posts": "210",
+      "ghosts": 87,
+      "title": null
+    })
+  }),
+    crtrack = (function () {
+      return (BH.game || cr).ride('-18 1i 18 1i#ie 2g if 2v ie 3e,#G 22h o8 -5k,S 21o ne#BMX');
+    }());
+
+  var GravityItem = crtrack.e[21][7].k[0].constructor;
+  var zeroGrav = window.zeroGrav = new GravityItem(510, 110, 0, crtrack);
+  zeroGrav.I = crtrack.e[21][7].k[1].I;
+  zeroGrav.direction.copy({ x: 0, y: 0 });
+  crtrack.e[5][1].k.push(zeroGrav);
+  delete crtrack.U['5_1'];
+
+});
+  </script>
+	</div>
+</div>
+
+</body>
+</html>
